@@ -1,0 +1,39 @@
+local Library = {}
+
+function Library:AddESP(Child, Name, Color, Size, Title)
+local Billboard = Instance.new("BillboardGui", Child)
+local Text = Instance.new("TextLabel", Billboard)
+local UIStroke = Instance.new("UIStroke", Text)
+local Highlight = Instance.new('Highlight', Child)
+        Billboard.AlwaysOnTop = true
+        Billboard.Size = UDim2.new(0,400,0,100)
+        Billboard.Adornee = Child
+        Billboard.Name = Title
+        Billboard.Active = true
+        Text.BackgroundTransparency = 1
+        Text.BackgroundColor3 = Color3.new(0,0,0)
+        Text.TextColor3 = Color
+        Text.Font = "Roboto"
+        Text.TextSize = Size
+        Text.TextTransparency = 0
+        Text.Visible = true
+        Text.Text = Name
+        Text.Size = UDim2.new(1,0,1,0)
+        UIStroke.Thickness = 1
+        UIStroke.Color = Color3.new(0,0,0)
+        UIStroke.Transparency = 0.75
+        Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        Highlight.FillColor = Color
+        Highlight.OutlineColor = Color
+        Highlight.FillTransparency = 1
+        Highlight.OutlineTransparency =  0
+        Highlight.Name = Title
+end
+function Library:Delete(name)
+for _,v in ipairs(workspace:GetDescendants()) do
+if v.Name == name then
+v:Destroy()
+end
+end
+end
+return Library
